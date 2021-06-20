@@ -3,8 +3,30 @@
 //
 
 /*********************************/
-/*     Components-DARK           */
+/*         Components            */
 /*===============================*/
+
+//component-wrapper
+.component-wrapper {
+    .title {
+        font-size: 20px;
+    }
+    &.sticky-bar {
+        li {
+            margin-bottom: 6px;
+            &:last-child {
+                margin-bottom: 0px !important;
+            }
+            a {
+                transition: all 0.5s ease;
+                &:hover,
+                &:focus {
+                    color: $primary !important;
+                }
+            }
+        }
+    }
+}
 
 //Buttons
 @each $name,
@@ -12,24 +34,24 @@ $value in $colors {
     .btn-#{$name} {
         background-color: #{$value} !important;
         border: 1px solid #{$value} !important;
-        color: $dark !important;
+        color: $white !important;
         box-shadow: 0 3px 5px 0 rgba($value, 0.3);
         &:hover, &:focus, &:active, &.active, &.focus{
             background-color: darken($value, 10%) !important;
             border-color: darken($value, 10%) !important;
-            color: $dark !important;
+            color: $white !important;
         }
     }
 
     .btn-soft-#{$name} {
-        background-color: rgba($value, 0.2) !important;
-        border: 1px solid rgba($value, 0.2) !important;
+        background-color: rgba($value, 0.1) !important;
+        border: 1px solid rgba($value, 0.1) !important;
         color: #{$value} !important;
         box-shadow: 0 3px 5px 0 rgba($value, 0.3);
         &:hover, &:focus, &:active, &.active, &.focus{
             background-color: #{$value} !important;
             border-color: #{$value} !important;
-            color: $dark !important;
+            color: $white !important;
         }
     }
 
@@ -40,58 +62,84 @@ $value in $colors {
         &:hover, &:focus, &:active, &.active, &.focus, &:not(:disabled):not(.disabled):active{
             background-color: #{$value};
             border-color: #{$value};
-            color: $dark !important;
+            color: $white !important;
             box-shadow: 0 3px 5px 0 rgba($value, 0.3);
         }
     }
 }
 .btn {
-    &.btn-dark {
-        color: $white !important;
-        background: $dark;
-        border: 1px solid $gray-100 !important;
-        &:hover, &:focus, &:active, &.active, &.focus {
-            background-color: darken($dark, 5%) !important;
-            color: $white !important; 
-        }
-    }    
-    &.btn-soft-dark {
-        color: rgba($dark, 0.5) !important;
-        border: 1px solid $gray-100 !important;
-        &:hover, &:focus, &:active, &.active, &.focus{
-            color: $white !important; 
-        }
-    }    
-    &.btn-outline-dark {
-        border: 1px solid $gray-100 !important;
-        color: $dark !important;
-        background-color: transparent;    
-        &:hover, &:focus, &:active, &.active, &.focus {
-            background-color: $dark !important;
-            color: $white !important;
-        }
+    padding: 8px 20px;
+    outline: none;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    font-weight: 600;
+    border-radius: 6px;
+    &:focus {
+        box-shadow: none !important;
+    }
+    &.btn-sm {
+        padding: 7px 16px;
+        font-size: 10px;
+    }
+    &.btn-lg {
+        padding: 14px 30px;
+        font-size: 16px;
+    } 
+    &.searchbtn {
+        padding: 6px 20px;
+    }
+    &.btn-pills {
+        border-radius: 30px;
     }
     &.btn-light {
         color: $dark !important;
-        border-color: darken($gray-200, 15%) !important;
+        border: 1px solid $gray-300 !important;
         &:hover, &:focus, &:active, &.active, &.focus{
-            background-color: lighten($light, 10%) !important;
-            color: $dark !important;
+            background-color: darken($light, 10%) !important;
+            color: $dark !important; 
         }
-    }    
+    }  
     &.btn-soft-light {
         color: rgba($dark, 0.5) !important;
-        border: 1px solid darken($gray-200, 15%) !important;
+        border: 1px solid $gray-300 !important;
         &:hover, &:focus, &:active, &.active, &.focus{
             color: $dark !important; 
         }
     }    
     &.btn-outline-light {
-        border-color: darken($gray-200, 15%) !important;
+        border: 1px solid $gray-300 !important;
         color: $dark !important;
+        background-color: transparent;    
         &:hover, &:focus, &:active, &.active, &.focus{
-            background-color: lighten($light, 10%) !important;
-            color: $dark !important;
+            background-color: $light !important;
+        }
+    }    
+    &.btn-icon {
+        height: 36px;
+        width: 36px;
+        line-height: 34px;
+        padding: 0;
+        .icons {
+            height: 16px;
+            width: 16px;
+            font-size: 16px;
+        }
+        &.btn-lg {
+            height: 48px;
+            width: 48px;
+            line-height: 46px;
+            .icons {
+                height: 20px;
+                width: 20px;
+                font-size: 20px;
+            }
+        }
+        &.btn-sm {
+            height: 30px;
+            width: 30px;
+            line-height: 28px;
         }
     }
 }
@@ -99,45 +147,84 @@ $value in $colors {
 button:not(:disabled) {
     outline: none;
 }
+
 //Shadow 
 .shadow {
     box-shadow: $shadow !important;
 }
-
 .shadow-lg {
     box-shadow: $shadow-lg !important;
 }
+.shadow-md {
+    box-shadow: $shadow-md !important;
+}
 
 //Badges
-@each $name,
-$value in $colors {
-    .badge-#{$name} {
-        background-color: #{$value} !important;
-        color: $dark !important;
-    }
-
-    .badge-outline-#{$name} {
-        background-color: transparent !important;
-        color: #{$value} !important;
-        border: 1px solid #{$value} !important;
+.badge {
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    font-weight: 600;
+    line-height: 11px;
+    &.badge-link {
+        &:hover {
+            color: $white !important;
+        }
     }
 }
-.badge {
-    &.badge-dark {
-        color: $white !important;
-        background-color: $dark !important;
+
+//Dropdowns
+@each $name,
+$value in $colors {
+    .dropdown-#{$name} {
+        .dropdown-menu {
+            .dropdown-item {
+                &:hover,
+                &.active,
+                &:active,
+                &.focus,
+                &:focus {
+                    background-color: transparent;
+                    color: #{$value} !important;
+                }
+            }
+        }
     }
-    &.badge-outline-dark {
-        color: $dark !important;
-        border: 1px solid darken($dark, 20%) !important;
-        background-color: transparent !important;
+}
+
+.btn-group {
+    .dropdown-toggle {
+        &:after {
+            content: "";
+            position: relative;
+            right: -4px;
+            top: -2px;
+            border: solid $white;
+            border-radius: 0.5px;
+            border-width: 0 2px 2px 0;
+            padding: 3px;
+            transform: rotate(45deg);
+            margin-left: 0;
+            vertical-align: 0;
+        }
     }
-    &.badge-light {
-        color: $dark !important;
-        background-color: $light !important;
-    }
-    &.badge-outline-light {
-        border: 1px solid $light !important;
+    .dropdown-menu {
+        margin-top: 10px;
+        border: 0;
+        border-radius: 5px;
+        box-shadow: $shadow;
+        &:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 45px;
+            box-sizing: border-box;
+            border: 7px solid $gray-700;
+            border-radius: 0.5px;
+            border-color: transparent transparent $white $white;
+            transform-origin: 0 0;
+            transform: rotate(135deg);
+            box-shadow: -2px 2px 2px -1px rgba($black, 0.15);
+        }
     }
 }
 
@@ -145,8 +232,8 @@ $value in $colors {
 @each $name,
 $value in $colors {
     .alert-#{$name} {
-        background-color: lighten($value, 5%);
-        color: $dark;
+        background-color: rgba($value, 0.9);
+        color: $white;
         border-color: $value;
         .alert-link {
             color: darken($value, 30%);
@@ -159,58 +246,186 @@ $value in $colors {
     }
 }
 .alert {
-    &.alert-dark {
-        background-color: $dark;
-        color: $light;
-        border-color: $gray-100;
-    }
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
     &.alert-light {
-        background-color: $light;
+        background-color: lighten($light, 3%);
         color: $dark;
-        border-color: $light;
+        border-color: $gray-200;
+    }
+    &.alert-dismissible {
+        padding-right: 30px;
+        .btn-close {
+            top: 10px;
+            right: 10px;
+            padding: 0px;
+        }
+    }
+    &.alert-pills {
+        border-radius: 30px;
+        display: inline-block;
+        .content {
+            font-weight: 600;
+        }
     }
 }
 
-
 //Breadcrumb
+.page-next-level{
+    .title {
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+    .page-next {
+        position: relative;
+        top: 110px;
+        z-index: 99;
+
+        @media (max-width: 768px) {
+            top: 70px;
+        }
+    }
+}
+
 .breadcrumb {
+    letter-spacing: 0.5px;
+    padding: 8px 24px;
+    display: block;
     .breadcrumb-item {
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        padding-left: 0;
+        display: inline-block;
         a {
             color: $dark;
+            &:hover {
+                color: $primary;
+            }
+        }
+        &.active {
+            color: $primary;
+        }
+        &:before {
+            content: "";
         }
         &:after {
+            content: "\F0142" !important;
+            font-size: 14px;
             color: $dark; 
+            font-family: 'Material Design Icons';
+            padding-left: 5px;
         }     
+        &:last-child {
+            &:after {
+                display: none;
+            }
+        } 
     }
 }
 
 //Pagination
-.pagination {   
+.pagination {
     .page-item {
+        &:first-child .page-link {
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        } 
+        &:last-child .page-link {
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
         .page-link {
             color: $dark;
-            border: 1px solid $gray-100;
-            background: $white; 
+            border: 1px solid $gray-300;
+            padding: 8px 16px;
+            font-size: 14px;
+            &:focus {
+                box-shadow: none;
+            }
             &:hover {
-                color: $dark !important;
+                color: $white;
+                background: rgba($primary, 0.9);
+                border-color: rgba($primary, 0.9);
             }
         }
-    }              
-    .active a {
-        color: $dark;
+        &.active {
+            .page-link {
+                color: $white;
+                background: $primary !important;
+                border-color: $primary;
+                cursor: not-allowed;
+            }
+        }
     }
 }
+
+//Avatar
+.avatar {
+    &.avatar-ex-sm {
+        max-height: 25px;
+    }
+    &.avatar-md-sm {
+        height: 45px;
+        width: 45px;
+    }
+    &.avatar-small {
+        height: 65px;
+        width: 65px;
+    }
+    &.avatar-md-md {
+        height: 80px;
+        width: 80px;
+    }
+    &.avatar-medium {
+        height: 110px;
+        width: 110px;
+    }
+    &.avatar-large {
+        height: 140px;
+        width: 140px;
+    }
+    &.avatar-ex-large {
+        height: 180px;
+        width: 180px;
+    }
+}
+
 //Accordion
 .accordion {
     .accordion-item {
+        overflow: hidden;
         .accordion-button {
-            text-align: right !important;
+            font-weight: 600;
+            text-align: left;
+            &:focus {
+                box-shadow: none;
+            }
+            &:before {
+                content: '\F0143';
+                display: block;
+                font-family: 'Material Design Icons';
+                font-size: 16px;
+                color: $primary;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: all 0.5s ease;
+            }
             &.collapsed {
                 background-color: $white;
                 color: $dark !important;
+                transition: all 0.5s;
                 &:before {
+                    top: 15px;
+                    transform: rotate(180deg);
                     color: $dark !important;
                 }
+            }
+            &:after {
+                display: none;
             }
         }
     }
@@ -218,31 +433,52 @@ $value in $colors {
 
 //Nav
 .nav-pills {
-    background: lighten($white, 10%);
-    .nav-link{
-        color: $dark !important;
+    margin-bottom: 15px;
+    background: darken($light, 1%);
+    .nav-link {
+        color: $gray-700 !important;
+        padding: 5px;
+        transition: all 0.5s ease;
         &.nav-link-alt {
-            color: $dark !important;
-            &:hover {
-                background: none !important;
-            }
+            color: $white !important;
             &.active {
-                background: $white !important;
+                background: $dark !important;
             }
-        }
-        &:hover {
-            background: lighten($white, 8%);
         }
         &.active {
-            color: $dark !important;
+            background: $primary;
+            color: $white !important;
+            .tab-para {
+                color: rgba($white, 0.65) !important;
+            }
         }
     }
 }
 
 //Processbar
 .progress-box {
+    .title {
+        font-size: 15px;
+    }
     .progress {
-        background: $gray-100;
+        height: 8px;
+        overflow: visible;
+        .progress-bar {
+            border-radius: 6px;
+            animation: animate-positive 3s;
+            overflow: visible !important;
+        }
+        .progress-value {
+            position: absolute;
+            top: -32px;
+            right: -15px;
+            font-size: 13px;
+        }
+    }
+    @keyframes animate-positive {
+        0% {
+            width: 0;
+        }
     }
 }
 
@@ -254,348 +490,282 @@ $value in $colors {
 }
 
 //Form
+.form-label,
+.form-check-label {
+    font-weight: 700;
+    font-size: 14px;
+}
+
 .form-control {
-    background: $white;
-    border: 1px solid $gray-100;
-    color: $gray-300 !important;
+    border: 1px solid $gray-300;
+    font-size: 14px;
+    line-height: 26px;
+    background-color: $white;
+    border-radius: 6px;
     &:focus {
-        background: $white;
+        border-color: $primary;
+        box-shadow: none;
     }
-    &::placeholder{
-        color: $gray-300;
+    &[readonly] {
+        background-color: $white;
+    }
+    &:disabled {
+        background-color: $gray-300;
     }
 }
 
 .form-check-input {
-    background-color: $white;
-    border-color: $gray-100;
+    &:focus {
+        border-color: $primary;
+        box-shadow: none;
+    }
+    &.form-check-input:checked {
+        background-color: $primary;
+        border-color: $primary;
+    }
 }
 
 //Subscribe form
 .subcribe-form {
+    .btn {
+        padding: 10px 20px;
+    }
     input {
+        padding: 12px 20px;
+        width: 100%;
+        color: $dark !important;
+        border: none;
+        outline: none !important;
+        padding-right: 160px;
+        padding-left: 30px;
         background-color: rgba($white, 0.8);
-        &::placeholder{
-            color: $gray-300;
-        }
+    }
+    button {
+        position: absolute;
+        top: 1.5px;
+        right: 2px;
+        outline: none !important;
+    }
+    form {
+        position: relative;
+        max-width: 600px;
+        margin: 0px auto;
     }
 }
 
 //Table
 .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
     .table {
-        color: $dark;
         td,
         th {
-            border-top-color: $gray-100;
+            vertical-align: middle;
         }
-        thead th {
-            border-bottom-color: $gray-100;
+        &.table-nowrap {
+            th, 
+            td {
+                white-space: nowrap;
+            }
         }
-    } 
+    }
     .table-center {
+        th {
+            vertical-align: middle !important;
+        }
         tbody {
             tr {
                 &:hover {
                     color: $dark;
-                    background-color: $light;
+                    background-color: $gray-100;
                 }
             }
         }
-    }
-}
-.table {
-    border-color: $gray-100;
-}
-
-.table-responsive .table-center tbody tr:hover {
-    color: #fff;
-    background-color: #253649;
-}
-
-//Modal
-.modal-content {
-    background: $white;
-    .modal-header {
-        button {
-            &.close {
-                color: $dark;
+        &.invoice-tb {
+            th, 
+            td {
+                text-align: end;
             }
         }
     }
-    .modal-header,
-    .modal-footer {
-        border-color: $gray-200;
-    }
-}
-.modal-open {
-    padding-right: 0 !important;
 }
 
 // Loader
 #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: linear-gradient(45deg, $white, $white);
-}
-
-//Social icons
-.social-icon,
-.social-icon .social {
-    li {
-        a {
-            color: $gray-300;
-            border: 1px solid $gray-300;
-            &:hover {
-                color: $dark !important;
+    z-index: 9999999;
+    #status {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        .spinner {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            margin: 100px auto;
+            .double-bounce1, .double-bounce2 {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background-color: $primary;
+                opacity: 0.6;
+                position: absolute;
+                top: 0;
+                left: 0;
+                animation: sk-bounce 2.0s infinite ease-in-out;
+            }
+            .double-bounce2 {
+                animation-delay: -1.0s;
             }
         }
     }
 }
+
+@keyframes sk-bounce {
+    0%, 100% { 
+      transform: scale(0.0);
+    } 50% { 
+      transform: scale(1.0);
+    }
+}
+
+//Social icons
 .social-icon {
+    li {
+        a {
+            color: $dark;
+            border: 1px solid $dark;
+            display: inline-block;
+            height: 32px;
+            width: 32px;
+            line-height: 28px;
+            text-align: center;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+            .fea-social {
+                stroke-width: 2;
+            }
+            &:hover {
+                background-color: $primary;
+                border-color: $primary !important;
+                color: $white !important;
+                .fea-social {
+                    fill: $primary;
+                }
+            }
+        }
+    }
+    &.social {
+        li {
+            a {
+                color: $gray-500;
+                border-color: $gray-500;
+            }
+        }
+    }
+
     &.foot-social-icon {
         li {
             a {
-                color: $gray-300;
+                color: $gray-500;
                 border-color: lighten($footer, 5%);
             }
         }
     }
 }
-
 //back to top
 .back-to-top {
-    color: $dark;
-    background-color: $gray-100;
-    box-shadow: $shadow;
+    z-index: 99; 
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    transition: all 0.5s ease;
+    .icons {
+        transition: all 0.5s ease;
+    }
     &:hover {
-        color: $white;
-    }
-}
-
-//Blog
-.media-list {
-    .sub-comment {
-        border-left: 2px dashed $gray-100;
-    }
-}
-
-.sidebar {
-    .widget {
-        .widget-search, .searchform {
-            input[type="text"] {
-                background: $white !important;
-            }
-            ::placeholder {
-                color: $gray-300;
-            }
-        }
-    }
-    .blog-categories {
-        li {
-            a {
-                color: $gray-300 !important;
-            }
-        }
-    }  
-    .post-recent {
-        .post-recent-content {
-            a {
-                color: $gray-300 !important;
-            }
-        }
-    }
-    .tagcloud {
-        > a {
-            background: $light !important;
-            color: $gray-300 !important;
-            &:hover {
-                color: $dark !important;
-            }
+        transform: rotate(45deg);
+        .icons {
+            transform: rotate(-45deg);
         }
     }
 }
-//countdown
-#countdown, #eventdown {
-    .count-down {
-        color: $dark !important;
-        border: 4px solid $gray-300;
+
+//back-to-home
+.back-to-home {
+    position: fixed;
+    top: 4%;
+    right: 2%;
+    z-index: 1;
+}
+
+//Sticky Sidebar
+.sticky-bar {
+    position: sticky;
+    top: 80px;
+}
+
+//Feather Icon
+.fea {
+    stroke-width: 1.8;
+    &.icon-sm {
+        height: 16px;
+        width: 16px;
+    }
+    &.icon-ex-md {
+        height: 20px;
+        width: 20px;
+    }
+    &.icon-m-md {
+        height: 28px;
+        width: 28px;
+    }
+    &.icon-md {
+        height: 35px;
+        width: 35px;
+    }
+    &.icon-lg {
+        height: 42px;
+        width: 42px;
+    }
+    &.icon-ex-lg {
+        height: 52px;
+        width: 52px;
     }
 }
 
-//Event(index-event.html)
-#eventdown {
-    .count-down {
-        border: 0;
-    }
-}
-
-//maintenance
-#clock {
-    color: $dark;
-}
-
-//CTA
-.play-btn {
-    color: $white;
-}
-
-//index-job.html
-.categories {
-    &:hover {
-        box-shadow: $shadow;
-    }
-}
-
-//Footer
-.footer {
-    background: $footer;
-    color: $gray-300;
-    .logo-footer {
-        color: $dark;
-    }
-    .footer-head {
-        color: $dark !important;
-    }
-    .foot-subscribe {
-        .form-control {
-            background-color: lighten($footer, 2%);
-            border: 1px solid lighten($footer, 2%);
-            color: $light;
-        }
-        &.foot-white {
-            .form-control {
-                color: $gray-300;
-            }
-        }
-        input{
-            &::placeholder{
-                color: $gray-300;
-            }
-        }
-    } 
-    .text-foot {
-        color: $gray-300;
-    }
-    .footer-list {
-        li {
-            a {
-                &:hover {
-                    color: lighten($gray-300, 20%);
-                }
-            }         
-        }
-    }    
-    &.footer-bar,
-    &.footer-border {
-        border-top: 1px solid lighten($footer, 5%);
-    }
-}
-
-//Home(Hero section)
-@mixin home-common {
-    background-size: cover;
-    align-self: center;
-    position: relative;
-    background-position: center center;
-}
-//Agency
-.agency-wrapper {
+[class^=uil-], 
+[class*=" uil-"] {
     &:before {
-        background-color: $light;
+        margin: 0;
     }
 }
 
-.flex-control-paging li a{
-    background: $white;
-}
-.bg-animation-left {
-    &:after {
-        background: rgba($white, 0.85) !important;
-    }
-    &.dark-left {
-        &:after {
-            background: rgba($white, 0.6) !important;
-        }
-    }
+.uim-svg {
+    vertical-align: 0 !important;
 }
 
-//Price 
-.pricing-rates {
-    border-bottom: 3px solid $gray-500;
-    &.business-rate {
-        &:hover {
-            background-color: $white !important;
-        }
+@media (max-width: 768px) {
+    .display-1 {
+        font-size: 56px !important;
     }
-}
-//Team
-.team {
-    &:hover {
-        img {
-            box-shadow: $shadow;
-        }
-    }   
-}
-
-//Testi
-.tiny-three-item {
-    .content {
-        &:before {
-            border: 8px solid $dark;
-            border-color: transparent $white $white transparent;
-            box-shadow: 2px 2px 2px -1px rgba($dark, 0.15);
-        }
+    .display-2 {
+        font-size: 50px !important;
     }
-}
-
-//Work / Portfolio
-.work-container, .courses-desc {
-    .overlay-work {
-        background-color: $dark;
+    .display-3 {
+        font-size: 42px !important;
     }
-}
-//Event (index-event.html)
-.event-schedule {
-    .date {
-        .day {
-            border: 2px solid $white;
-        }
-    }
-    &:hover {
-        box-shadow: $shadow;
-        background: $light !important;
-    }
-}
-
-//course.html
-.courses-desc {
-    &:hover {
-        box-shadow: $shadow;
-    }
-}
-
-//index-integration.html
-.shape {
-    &.integration-hero {
-        background-color: $white;
-    }
-}
-
-//Timeline
-.main-icon {
-    border: 2px solid $gray-200;
-}
-.timeline-page {
-    &:after {
-        background-color: $gray-200 !important;
-    }
-}
-
-// Responsive 
-@media (min-width: 769px){    
-    //studio 
-    .bg-studio {
-        &:after{
-            background: $white none repeat scroll 0 0;
-        }
+    .display-4 {
+        font-size: 36px !important;
     }
 }
